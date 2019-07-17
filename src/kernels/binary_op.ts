@@ -22,6 +22,7 @@ import {WebGL2ComputeProgram} from './webgl2compute_program';
 
 export const MUL = 'return a * b;';
 export const ADD = 'return a + b;';
+export const SUB = 'return a - b;';
 
 export class BinaryOpProgram implements WebGL2ComputeProgram {
   outputShape: number[];

@@ -251,6 +251,10 @@ export class WebGL2ComputeBackend extends KernelBackend {
     return this.binaryOp(a, b, binary_op.ADD);
   }
 
+  subtract(a: Tensor, b: Tensor): Tensor {
+    return this.binaryOp(a, b, binary_op.SUB);
+  }
+
   multiply(a: Tensor, b: Tensor): Tensor {
     return this.binaryOp(a, b, binary_op.MUL);
   }
