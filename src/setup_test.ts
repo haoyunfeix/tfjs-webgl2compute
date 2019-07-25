@@ -31,6 +31,7 @@ const INCLUDE_LIST: string[] = [
   'matmul',
   'add ',
   'subtract',
+  'floor divide',
   'mul ',
   'conv2d',
   'depthwise',
