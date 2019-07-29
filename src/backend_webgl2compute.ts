@@ -259,6 +259,14 @@ export class WebGL2ComputeBackend extends KernelBackend {
     return this.binaryOp(a, b, binary_op.MUL);
   }
 
+  realDivide(a: Tensor, b: Tensor): Tensor {
+    return this.binaryOp(a, b, binary_op.DIV);
+  }
+
+  minimum(a: Tensor, b: Tensor): Tensor {
+    return this.binaryOp(a, b, binary_op.MIN);
+  }
+
   relu<T extends Tensor>(x: T): T {
     const program = new UnaryOpProgram(unary_op.RELU, x.shape);
     return this.compileAndRun(program, [x]) as T;

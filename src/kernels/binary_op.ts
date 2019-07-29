@@ -23,14 +23,18 @@ import {WebGL2ComputeProgram} from './webgl2compute_program';
 export const MUL = 'return a * b;';
 export const ADD = 'return a + b;';
 export const SUB = 'return a - b;';
-
-export const INT_DIV = `
-  float s = sign(a) * sign(b);
-  int ia = int(round(a));
-  int ib = int(round(b));
-  return float(idiv(ia, ib, s));
+export const DIV = `
+  if (b == 0.0) {
+    return NAN;
+  }
+  if (a == b) {
+    return 1.0;
+  };
+  return a / b;
 `;
-
+export const MIN = `
+  return min(a, b);
+`;
 export class BinaryOpProgram implements WebGL2ComputeProgram {
   outputShape: number[];
   userCode: string;
