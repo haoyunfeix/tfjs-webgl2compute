@@ -20,6 +20,11 @@ import * as broadcast_util from '@tensorflow/tfjs-core/dist/ops/broadcast_util';
 import {computeDispatch} from '../webgl2compute_util';
 import {WebGL2ComputeProgram} from './webgl2compute_program';
 
+const CHECK_NAN_SNIPPET = `
+  if (isnan(a)) return a;
+  if (isnan(b)) return b;
+`;
+
 export const MUL = 'return a * b;';
 export const ADD = 'return a + b;';
 export const SUB = 'return a - b;';
@@ -32,7 +37,7 @@ export const DIV = `
   };
   return a / b;
 `;
-export const MIN = `
+export const MIN = CHECK_NAN_SNIPPET + `
   return min(a, b);
 `;
 export class BinaryOpProgram implements WebGL2ComputeProgram {
